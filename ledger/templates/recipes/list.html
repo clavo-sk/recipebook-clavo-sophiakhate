@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Recipe Book{% endblock %}
+{% block content %}
+	<h1>Recipe Book</h1>
+	<ul>
+		{% for Recipe in recipes %}
+			<a href= {{Recipe.link}} >
+				<li>{{ Recipe.name }}</li><br>
+			</a>
+		{% endfor %}
+	</ul>
+{% endblock %}
