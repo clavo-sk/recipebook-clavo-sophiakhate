@@ -1,26 +1,27 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
 class Ingredient(models.Model):
-    ingredientName = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     
     def __str__(self):
-        return '{}'.format(self.ingredientName)
+        return self.name
         
     def get_absolute_url(self):
-        return reverse('ingredient_detail', args=[str(self.ingredientName)])
+        return reverse('ingredient_detail', args=[str(self.name)])
 
 class Recipe(models.Model):
-    recipeName = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     
     def __str__(self):
-        return '{}'.format(self.recipeName)
+        return self.name
         
     def get_absolute_url(self):
-        return reverse('recipe_detail', args=[str(self.recipeName)])
+        return reverse('ledger:recipe_detail', args=[str(self.pk)])
     
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredients = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name = "recipe")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name = "ingredients")
