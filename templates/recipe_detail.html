@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %} {{ recipe.name }} {% endblock %}
 
-{% block content %}
+{% block main %}
 <h2>{{ recipe.name }} Details</h2>
-    {% if object.recipe_image %}
-        <img src="{{ object.recipe_image.url }}" alt="{{ img.description }}">
-    {% endif %}
     <p>Author: {{ recipe.author }}</p>
+    <p>Ingredients:</p>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.ingredient.name }} : {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
-	<p> <a href="{% url 'ledger:image_form' recipe.pk %}"> Add image </a> </p>
+    {% for image in recipe.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+    {% endfor %}
+	<p> <a href="{% url 'ledger:image-update' recipe.pk %}"> Add image </a> </p>
+	<p> <a href="{% url 'ledger:list' %}"> Return to list </a> </p>
 	
 {% endblock %}

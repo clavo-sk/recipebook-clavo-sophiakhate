@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %} Recipe List {% endblock %}
-{% block content %}
+{% block main %}
 <h2>List of Recipes:</h2>
     <ol>
         {% for recipe in recipe_list%}
             <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
         {% endfor %}
     </ol>
-	<p> <a href="{% url 'ledger:recipe_form' %}"> Add a new recipe </a> </p>
+	<p> <a href="/recipe/add"> Add a new recipe </a> </p>
 {% endblock %}
