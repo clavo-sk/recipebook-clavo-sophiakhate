@@ -4,6 +4,7 @@
 
 {% block content %}
     {{ recipe.name }}
+    <p>Author: {{ recipe.author }}</p>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.ingredient.name }} : {{ ingredient.quantity }}</li>
