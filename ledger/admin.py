@@ -13,6 +13,7 @@ class IngredientAdmin(admin.ModelAdmin):
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [RecipeIngredientInline]
 
+
 class RecipeImageAdmin(admin.ModelAdmin):
     model = RecipeImage
 
