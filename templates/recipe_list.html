@@ -9,4 +9,5 @@
             <li><a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a></li>
         {% endfor %}
     </ol>
+	<p> <a href="{% url 'ledger:recipe_form' %}"> Add a new recipe </a> </p>
 {% endblock %}

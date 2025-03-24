@@ -13,4 +13,6 @@
             <li>{{ ingredient.ingredient.name }} : {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
+	<p> <a href="{% url 'ledger:image_form' recipe.pk %}"> Add image </a> </p>
+	
 {% endblock %}
